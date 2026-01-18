@@ -21,6 +21,15 @@ router.put(
   upload.single("image"),
   ProductController.update,
 );
+
+// Import Route - Must be before /:id
+router.post(
+  "/import",
+  authMiddleware,
+  upload.single("file"), // "file" matches the formData key from client
+  ProductController.importProducts,
+);
+
 router.delete("/:id", authMiddleware, ProductController.delete);
 
 export default router;

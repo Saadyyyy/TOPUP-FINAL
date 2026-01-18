@@ -121,4 +121,18 @@ export class ProductController {
       next(error);
     }
   }
+
+  static async importProducts(req: Request, res: Response, next: NextFunction) {
+    try {
+      if (!req.file) {
+        res.status(400).json({ error: "No file uploaded" });
+        return;
+      }
+
+      const results = await ProductService.importProducts(req.file.path);
+      res.json({ success: true, results });
+    } catch (error) {
+      next(error);
+    }
+  }
 }

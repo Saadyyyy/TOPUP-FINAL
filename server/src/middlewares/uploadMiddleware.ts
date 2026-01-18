@@ -23,16 +23,26 @@ const fileFilter = (
   file: Express.Multer.File,
   cb: multer.FileFilterCallback,
 ) => {
-  const allowedTypes = /jpeg|jpg|png|gif|webp/;
-  const extname = allowedTypes.test(
-    path.extname(file.originalname).toLowerCase(),
-  );
-  const mimetype = allowedTypes.test(file.mimetype);
+  // Allow images
+  const imageTypes = /jpeg|jpg|png|gif|webp/;
+  // Allow excel
+  const excelTypes = /xlsx|xls|spreadsheet|excel/;
+
+  const extname =
+    imageTypes.test(path.extname(file.originalname).toLowerCase()) ||
+    excelTypes.test(path.extname(file.originalname).toLowerCase());
+
+  const mimetype =
+    imageTypes.test(file.mimetype) ||
+    excelTypes.test(file.mimetype) ||
+    file.mimetype ===
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+    file.mimetype === "application/vnd.ms-excel";
 
   if (extname && mimetype) {
     return cb(null, true);
   } else {
-    cb(new Error("Images only!"));
+    cb(new Error("Images and Excel files only!"));
   }
 };
 

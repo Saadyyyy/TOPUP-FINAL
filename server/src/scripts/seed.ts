@@ -26,19 +26,9 @@ async function seed() {
     // 2. Seed Categories
     const categories = [
       {
-        name: "Mobile Legends",
-        image_url: "/uploads/mlbb.png",
-        description: "Top up Diamond Mobile Legends",
-      },
-      {
-        name: "Free Fire",
-        image_url: "/uploads/ff.png",
-        description: "Top up Diamond Free Fire",
-      },
-      {
-        name: "PUBG Mobile",
-        image_url: "/uploads/pubgm.png",
-        description: "Top up UC PUBG Mobile",
+        name: "Game Topup",
+        image_url: "/uploads/topup.png",
+        description: "Top up",
       },
     ];
 
