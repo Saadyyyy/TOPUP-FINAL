@@ -296,14 +296,14 @@ export default function ProductsPage() {
             <Plus className="w-4 h-4 mr-2" />
             Add Product
           </Button>
-          <Button
+          {/* <Button
             onClick={() => setShowImportDialog(true)}
             variant="outline"
             className="flex-1 sm:flex-none"
           >
             <Upload className="w-4 h-4 mr-2" />
             Import
-          </Button>
+          </Button> */}
         </div>
       </div>
 
